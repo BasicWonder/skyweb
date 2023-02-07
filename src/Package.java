@@ -8,7 +8,7 @@ public class Package{
     
     public Package(){
         
-        System.out.print(this.TITLE + ": " + this.VERSION + " (" + UPDATED + ")" + " " + TYPE);
+        System.out.println(this.TITLE + ": " + this.VERSION + " (" + UPDATED + ")" + " " + TYPE);
     }
     
     
