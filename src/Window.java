@@ -16,6 +16,7 @@ public class Window extends Application{
     public void start(Stage stage) {
         TabManager manager = new TabManager("https://www.google.com");
         
+        Package config = new Package();
         
         Preload preloader = new Preload(manager);
         MenuInt menus = new MenuInt(manager,stage);
@@ -31,13 +32,12 @@ public class Window extends Application{
         
         Group root = new Group(box);
         
-        
         Scene scene = new Scene(root, screenSize.getWidth()/1.5, screenSize.getHeight()/1.75);
 
         box.prefWidthProperty().bind(scene.widthProperty());
         box.prefHeightProperty().bind(scene.heightProperty());
         
-        stage.setTitle("My JavaFX Application");
+        stage.setTitle(config.TITLE);
         stage.setScene(scene);
         stage.show();
         
