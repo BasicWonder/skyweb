@@ -1,6 +1,7 @@
 package com.skycers;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
+import javafx.scene.web.*;
 import javafx.scene.input.KeyCombination.*;
 import javafx.event.*;
 import javafx.stage.*;
@@ -31,8 +32,28 @@ public class MenuInt{
                      fileChooser.setTitle("Open Local File");
                      File selectedFile = fileChooser.showOpenDialog(stage);
                      if (selectedFile != null) {
+                         System.out.println("Internal File: "  + selectedFile.getPath());
                          
+                         manager.open(selectedFile.getPath());
                      }
+                }
+            });
+            // Save Page
+            MenuItem saveFile = new MenuItem("Save File");
+            saveFile.setAccelerator(KeyCombination.keyCombination("Shortcut+S"));
+            saveFile.setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    WebView selected = manager.selected();
+                     
+                    try (BufferedReader reader = new BufferedReader(new FileReader(new File(selected.getEngine().getLocation())))) {
+                        String line;
+                        while ((line = reader.readLine()) != null)
+                            System.out.println(line);
+                        
+                    }
+                    catch(IOException exc){
+                        exc.printStackTrace();
+                    }
                 }
             });
         
