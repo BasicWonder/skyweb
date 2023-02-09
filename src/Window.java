@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javafx.scene.layout.*;
 import javafx.geometry.Insets;
+import javafx.scene.control.*;
 
 
 public class Window extends Application{
@@ -24,9 +25,11 @@ public class Window extends Application{
         menu.getChildren().add(menus.bar);
         menu.getChildren().add(preloader.get());
         
+        TextField textBar = new AddressBar(manager);
         
         VBox box = new VBox();
         box.getChildren().add(menu);
+        box.getChildren().add(textBar);
         box.getChildren().add(manager.asNode());
         
         
