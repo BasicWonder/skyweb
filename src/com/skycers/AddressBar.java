@@ -26,6 +26,9 @@ public class AddressBar extends TextField{
                         }
                     }
                     
+                    if(( easyUrl.contains(".") || easyUrl.contains("http://") || easyUrl.contains("https://") ) && !resultFound ){
+                        easyUrl = "https://google.com/search?q=" + self.getText();
+                    }
                     
                      manager.set(easyUrl);
                 }
